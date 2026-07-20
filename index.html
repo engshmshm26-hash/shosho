@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaimaa Beauty | Premium Makeup & Cosmetics</title>
+    
+    <!-- Google Fonts: Playfair Display for headings, Poppins for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           CSS Variables & Global Styling
+           ========================================== */
+        :root {
+            --rose-gold: #B76E79;
+            --rose-gold-dark: #9c5963;
+            --soft-pink: #FDF0F2;
+            --beige: #F5EBE0;
+            --beige-dark: #E3D5CA;
+            --white: #FFFFFF;
+            --text-dark: #4A4A4A;
+            --text-light: #888888;
+            --success: #4caf50;
+            --shadow-sm: 0 4px 6px rgba(183, 110, 121, 0.05);
+            --shadow-md: 0 10px 20px rgba(183, 110, 121, 0.1);
+            --shadow-lg: 0 15px 40px rgba(183, 110, 121, 0.15);
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--soft-pink);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            color: var(--rose-gold-dark);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--rose-gold), var(--rose-gold-dark));
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--rose-gold);
+            color: var(--rose-gold-dark);
+        }
+
+        .btn-outline:hover {
+            background: var(--rose-gold);
+            color: var(--white);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* ==========================================
+           Authentication Pages (Login & Signup)
+           ========================================== */
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--soft-pink) 0%, var(--beige) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-card {
+            background: var(--white);
+            width: 100%;
+            max-width: 450px;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .auth-logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .auth-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .auth-form .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .auth-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--beige-dark);
+            background: var(--soft-pink);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .auth-form input:focus {
+            outline: none;
+            border-color: var(--rose-gold);
+            box-shadow: 0 0 0 3px rgba(183, 110, 121, 0.1);
+        }
+
+        .auth-form .btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .auth-switch {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .auth-switch a {
+            color: var(--rose-gold);
+            font-weight: 600;
+        }
+
+        /* Decorative circles for auth background */
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(183, 110, 121, 0.1);
+            z-index: 1;
+        }
+        .c1 { width: 300px; height: 300px; top: -50px; left: -50px; }
+        .c2 { width: 200px; height: 200px; bottom: -30px; right: -30px; }
+        .c3 { width: 150px; height: 150px; top: 40%; right: 10%; }
+
+        /* ==========================================
+           Main App Layout (Navbar, Pages, Footer)
+           ========================================== */
+        .app-wrapper {
+            display: none; /* Hidden until login */
+        }
+
+        .app-wrapper.active {
+            display: block;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--rose-gold-dark);
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rose-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--soft-pink);
+            border-radius: 30px;
+            padding: 8px 15px;
+            width: 250px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            margin-left: 10px;
+            color: var(--text-dark);
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--rose-gold);
+            color: var(--white);
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--rose-gold-dark);
+            background: none;
+        }
+
+        /* Pages General */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(253, 240, 242, 0.9) 0%, rgba(253, 240, 242, 0.4) 50%, transparent 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            padding: 0 50px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--rose-gold-dark);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        /* Categories Grid */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 25px;
+        }
+
+        .cat-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--rose-gold);
+        }
+
+        .cat-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--soft-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.8rem;
+            color: var(--rose-gold);
+        }
+
+        .cat-card h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Product Cards */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-img-wrapper {
+            height: 280px;
+            overflow: hidden;
+            background: var(--beige);
+            position: relative;
+        }
+
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .fav-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.9);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--rose-gold);
+            font-size: 1.1rem;
+            z-index: 5;
+        }
+
+        .fav-btn:hover {
+            background: var(--rose-gold);
+            color: white;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            color: #FFD700;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--rose-gold-dark);
+            margin-bottom: 15px;
+            margin-top: auto;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .product-actions .btn {
+            padding: 10px 15px;
+            font-size: 0.85rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        /* Offers Banner */
+        .offers-banner {
+            background: linear-gradient(45deg, var(--rose-gold), var(--rose-gold-dark));
+            border-radius: 20px;
+            padding: 50px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .offers-banner h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .offers-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .offers-banner .btn {
+            background: white;
+            color: var(--rose-gold-dark);
+        }
+
+        .offers-banner .btn:hover {
+            background: var(--text-dark);
+            color: white;
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .review-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+            border: 3px solid var(--rose-gold);
+        }
+
+        .review-text {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--rose-gold-dark);
+        }
+
+        /* Product Details Page */
+        .details-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .details-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .details-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .details-info .price {
+            font-size: 2rem;
+            color: var(--rose-gold);
+            font-weight: 700;
+            margin: 15px 0;
+        }
+
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .qty-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--soft-pink);
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid var(--beige-dark);
+            border-radius: 10px;
+            padding: 8px;
+            font-size: 1rem;
+        }
+
+        /* Cart & Checkout */
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .cart-items {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--beige);
+            align-items: center;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-info h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        .remove-btn {
+            color: #ff4d4d;
+            background: none;
+            font-size: 0.9rem;
+        }
+
+        .cart-summary {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            height: fit-content;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .summary-total {
+            border-top: 2px solid var(--beige);
+            padding-top: 15px;
+            margin-top: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--rose-gold-dark);
+        }
+
+        .checkout-form .input-group {
+            margin-bottom: 20px;
+        }
+
+        .checkout-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .checkout-form input, .checkout-form select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--beige-dark);
+            background: var(--soft-pink);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: #ccc;
+            padding: 60px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-col p, .footer-col li, .footer-col a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .footer-col a:hover {
+            color: var(--rose-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .social-links a:hover {
+            background: var(--rose-gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .details-container, .cart-layout { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 3rem; }
+            .offers-banner { flex-direction: column; text-align: center; gap: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .search-box { display: none; }
+            .mobile-toggle { display: block; }
+            
+            /* Simple mobile menu toggle logic visually represented */
+            .nav-links.mobile-active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: var(--shadow-md);
+            }
+            .hero { height: 70vh; }
+            .hero-content { padding: 0 30px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content p { font-size: 1rem; }
+            .section { padding: 50px 0; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         AUTHENTICATION WRAPPER (Login / Signup)
+         ========================================== -->
+    <div class="auth-wrapper" id="authWrapper">
+        <div class="bg-circle c1"></div>
+        <div class="bg-circle c2"></div>
+        <div class="bg-circle c3"></div>
+
+        <!-- Login Form -->
+        <div class="auth-card" id="loginCard">
+            <div class="auth-logo"><i class="fas fa-spa"></i></div>
+            <h1 class="auth-logo" style="font-size: 2rem; margin-bottom: 5px;">Shaimaa Beauty</h1>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Sign in to continue shopping</p>
+            
+            <form class="auth-form" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="you@example.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="********" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+            
+            <p class="auth-switch">Don't have an account? <a href="#" onclick="switchAuth('signup')">Sign Up</a></p>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="auth-card" id="signupCard" style="display: none;">
+            <div class="auth-logo"><i class="fas fa-spa"></i></div>
+            <h1 class="auth-logo" style="font-size: 2rem; margin-bottom: 5px;">Join Shaimaa Beauty</h1>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Create an account to start shopping</p>
+            
+            <form class="auth-form" onsubmit="handleSignup(event)">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe" required>
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="you@example.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="********" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+            
+            <p class="auth-switch">Already have an account? <a href="#" onclick="switchAuth('login')">Sign In</a></p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MAIN APPLICATION WRAPPER
+         ========================================== -->
+    <div class="app-wrapper" id="appWrapper">
+        
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo" onclick="navigateTo('home')">Shaimaa Beauty</div>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" onclick="navigateTo('home')">Home</a></li>
+                    <li><a href="#" onclick="navigateTo('products')">Products</a></li>
+                    <li><a href="#" onclick="navigateTo('categories')">Categories</a></li>
+                    <li><a href="#" onclick="navigateTo('offers')">Offers</a></li>
+                    <li><a href="#" onclick="navigateTo('about')">About Us</a></li>
+                    <li><a href="#" onclick="navigateTo('contact')">Contact Us</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search" style="color: var(--rose-gold);"></i>
+                        <input type="text" placeholder="Search products..." id="searchInput" oninput="handleSearch()">
+                    </div>
+                    <div class="nav-icon" onclick="navigateTo('favorites')">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="nav-icon" onclick="navigateTo('cart')">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- PAGES CONTAINER -->
+        <div id="pagesContainer">
+
+            <!-- HOME PAGE -->
+            <div class="page active" id="home-page">
+                <section class="hero">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1>Radiate Confidence with Shaimaa Beauty</h1>
+                        <p>Discover premium makeup and cosmetics curated for every skin tone. Elevate your daily routine with our luxurious new collection.</p>
+                        <button class="btn btn-primary" onclick="navigateTo('products')">Shop New Arrivals <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </section>
+
+                <section class="section container">
+                    <h2 class="section-title">Shop by Category</h2>
+                    <p class="section-subtitle">Find exactly what you need from our wide range of beauty essentials</p>
+                    <div class="cat-grid" id="categoryGrid"></div>
+                </section>
+
+                <section class="section container" style="background: white; border-radius: 20px; padding: 40px;">
+                    <div class="offers-banner">
+                        <div>
+                            <h2>Special Summer Sale</h2>
+                            <p>Get up to 40% off on selected premium items. Limited time only!</p>
+                        </div>
+                        <button class="btn" onclick="navigateTo('offers')">View Offers</button>
+                    </div>
+                    
+                    <h3 style="margin-bottom: 30px;">Best Sellers</h3>
+                    <div class="product-grid" id="bestSellersGrid"></div>
+                </section>
+
+                <section class="section container">
+                    <h2 class="section-title">What Our Customers Say</h2>
+                    <p class="section-subtitle">Real reviews from beauty enthusiasts like you</p>
+                    <div class="reviews-grid">
+                        <div class="review-card">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Customer" class="review-img">
+                            <div class="rating">★★★★★</div>
+                            <p class="review-text">"The foundation is absolutely flawless! It matches my skin tone perfectly and lasts all day. Shaimaa Beauty never disappoints."</p>
+                            <div class="review-author">Sarah Mitchell</div>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80" alt="Customer" class="review-img">
+                            <div class="rating">★★★★★</div>
+                            <p class="review-text">"Fast shipping and beautiful packaging. The matte lipstick is to die for. I will definitely be a returning customer!"</p>
+                            <div class="review-author">Emma Johnson</div>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Customer" class="review-img">
+                            <div class="rating">★★★★☆</div>
+                            <p class="review-text">"High quality brushes at a great price. They are incredibly soft and blend makeup seamlessly. Highly recommend."</p>
+                            <div class="review-author">Michael Davis</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- CATEGORIES PAGE -->
+            <div class="page" id="categories-page">
+                <section class="section container">
+                    <h2 class="section-title">All Categories</h2>
+                    <p class="section-subtitle">Browse through our extensive collection of beauty categories</p>
+                    <div class="cat-grid" id="allCategoriesGrid"></div>
+                </section>
+            </div>
+
+            <!-- PRODUCTS PAGE -->
+            <div class="page" id="products-page">
+                <section class="section container">
+                    <h2 class="section-title" id="productsTitle">All Products</h2>
+                    <p class="section-subtitle" id="productsSubtitle">Discover our full range of premium beauty products</p>
+                    <div class="product-grid" id="productsGrid"></div>
+                </section>
+            </div>
+
+            <!-- PRODUCT DETAILS PAGE -->
+            <div class="page" id="details-page">
+                <section class="section container">
+                    <div class="details-container" id="detailsContainer"></div>
+                </section>
+            </div>
+
+            <!-- OFFERS PAGE -->
+            <div class="page" id="offers-page">
+                <section class="section container">
+                    <h2 class="section-title">Special Offers & Discounts</h2>
+                    <p class="section-subtitle">Grab your favorite products at unbeatable prices</p>
+                    <div class="product-grid" id="offersGrid"></div>
+                </section>
+            </div>
+
+            <!-- CART PAGE -->
+            <div class="page" id="cart-page">
+                <section class="section container">
+                    <h2 class="section-title">Shopping Cart</h2>
+                    <p class="section-subtitle">Review your selected items before checkout</p>
+                    <div class="cart-layout" id="cartContainer"></div>
+                </section>
+            </div>
+
+            <!-- FAVORITES PAGE -->
+            <div class="page" id="favorites-page">
+                <section class="section container">
+                    <h2 class="section-title">Your Favorites</h2>
+                    <p class="section-subtitle">Items you have saved for later</p>
+                    <div class="product-grid" id="favoritesGrid"></div>
+                </section>
+            </div>
+
+            <!-- CHECKOUT PAGE -->
+            <div class="page" id="checkout-page">
+                <section class="section container">
+                    <h2 class="section-title">Checkout</h2>
+                    <p class="section-subtitle">Enter your details to complete the purchase</p>
+                    <div class="cart-layout">
+                        <div class="cart-items checkout-form">
+                            <h3 style="margin-bottom: 20px;">Shipping Information</h3>
+                            <form onsubmit="completeOrder(event)">
+                                <div class="input-group">
+                                    <label>Full Name</label>
+                                    <input type="text" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Address</label>
+                                    <input type="text" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>City</label>
+                                    <input type="text" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Payment Method</label>
+                                    <select>
+                                        <option>Credit Card</option>
+                                        <option>PayPal</option>
+                                        <option>Cash on Delivery</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Place Order</button>
+                            </form>
+                        </div>
+                        <div class="cart-summary" id="checkoutSummary"></div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ABOUT US PAGE -->
+            <div class="page" id="about-page">
+                <section class="section container">
+                    <h2 class="section-title">About Shaimaa Beauty</h2>
+                    <p class="section-subtitle">Redefining beauty standards since 2015</p>
+                    <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: var(--shadow-md); max-width: 800px; margin: 0 auto; text-align: center;">
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80" alt="About Us" style="width: 100%; height: 300px; object-fit: cover; border-radius: 15px; margin-bottom: 30px;">
+                        <p style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 20px;">
+                            Founded with a passion for beauty and elegance, Shaimaa Beauty has grown from a small boutique to a leading online cosmetics retailer. We believe that makeup is an art form, and every individual is a canvas waiting to be expressed.
+                        </p>
+                        <p style="color: var(--text-light);">
+                            Our products are cruelty-free, ethically sourced, and designed to enhance your natural beauty. Join thousands of satisfied customers who trust Shaimaa Beauty for their daily glamour.
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- CONTACT US PAGE -->
+            <div class="page" id="contact-page">
+                <section class="section container">
+                    <h2 class="section-title">Contact Us</h2>
+                    <p class="section-subtitle">We'd love to hear from you</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: white; padding: 40px; border-radius: 20px; box-shadow: var(--shadow-md);">
+                        <div>
+                            <h3>Get in Touch</h3>
+                            <p style="margin-bottom: 20px; color: var(--text-light);">Have a question about our products or your order? Reach out to us!</p>
+                            <p style="margin-bottom: 15px;"><strong><i class="fas fa-envelope" style="color: var(--rose-gold);"></i> Email:</strong> support@shaimaabeauty.com</p>
+                            <p style="margin-bottom: 15px;"><strong><i class="fas fa-phone" style="color: var(--rose-gold);"></i> Phone:</strong> +1 (800) 123-4567</p>
+                            <p><strong><i class="fas fa-map-marker-alt" style="color: var(--rose-gold);"></i> Address:</strong> 123 Beauty Street, Glamour City, CA 90210</p>
+                        </div>
+                        <form onsubmit="sendMessage(event)">
+                            <input type="text" placeholder="Your Name" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--beige-dark); background: var(--soft-pink);" required>
+                            <input type="email" placeholder="Your Email" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--beige-dark); background: var(--soft-pink);" required>
+                            <textarea placeholder="Your Message" rows="4" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--beige-dark); background: var(--soft-pink); font-family: 'Poppins';" required></textarea>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>Shaimaa Beauty</h3>
+                        <p>Premium makeup and cosmetics for the modern, confident individual. Quality you can trust, beauty you can see.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Quick Links</h3>
+                        <a href="#" onclick="navigateTo('home')">Home</a>
+                        <a href="#" onclick="navigateTo('products')">Products</a>
+                        <a href="#" onclick="navigateTo('offers')">Offers</a>
+                        <a href="#" onclick="navigateTo('about')">About Us</a>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Customer Service</h3>
+                        <a href="#" onclick="navigateTo('contact')">Contact Us</a>
+                        <a href="#">Shipping & Returns</a>
+                        <a href="#">FAQs</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Contact Info</h3>
+                        <p><i class="fas fa-envelope"></i> support@shaimaabeauty.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (800) 123-4567</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Beauty Street, CA</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Shaimaa Beauty. All Rights Reserved. Designed for Web Design Final Project.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // ==========================================
+        // DATA: Products and Categories
+        // ==========================================
+        const categories = [
+            { name: "Foundation", icon: "fas fa-fill-drip" },
+            { name: "Concealer", icon: "fas fa-eye" },
+            { name: "Blush", icon: "fas fa-air-freshener" },
+            { name: "Lipstick", icon: "fas fa-lips" },
+            { name: "Mascara", icon: "fas fa-eye" },
+            { name: "Eyeshadow", icon: "fas fa-palette" },
+            { name: "Eyeliner", icon: "fas fa-pen-fancy" },
+            { name: "Powder", icon: "fas fa-snowflake" },
+            { name: "Skincare", icon: "fas fa-pump-soap" },
+            { name: "Perfume", icon: "fas fa-spray-can" },
+            { name: "Makeup Brushes", icon: "fas fa-paint-brush" }
+        ];
+
+        const products = [
+            // Foundation
+            { id: 1, name: "Flawless Finish Foundation", category: "Foundation", price: 34.99, rating: 5, img: "https://images.unsplash.com/photo-1631730486572-226d1f595b68?auto=format&fit=crop&w=500&q=80", desc: "A lightweight, buildable foundation for a flawless natural finish.", bestSeller: true },
+            { id: 2, name: "Hydrating Glow Foundation", category: "Foundation", price: 29.99, rating: 4, img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80", desc: "Infused with hyaluronic acid for a dewy, radiant complexion.", bestSeller: false },
+            
+            // Concealer
+            { id: 3, name: "Full Coverage Concealer", category: "Concealer", price: 19.99, rating: 5, img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80", desc: "Hide imperfections instantly with this long-lasting concealer.", bestSeller: true },
+            
+            // Blush
+            { id: 4, name: "Peach Blossom Blush", category: "Blush", price: 22.50, rating: 4, img:  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYdqCoL5Y_oYNwby90C_mjtssx-FkRtW2WH3uYq89wVw&s=10"},
+            { id: 6, name: "Satin Glow Lipstick", category: "Lipstick", price: 21.00, rating: 4, img: "https://images.unsplash.com/photo-1599733589046-8a35aa3271c8?auto=format&fit=crop&w=500&q=80", desc: "Smooth satin finish with a hint of shimmer.", bestSeller: false },
+            
+            // Mascara
+            { id: 7, name: "Volumizing Mascara", category: "Mascara", price: 15.99, rating: 5, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMUcuwc1PISnArlT6gWp0lh9eTE6ZP6HLU4Li2vhMH3w&s=10", desc: "Get voluminous, clump-free lashes in just one coat.", bestSeller: true },
+            
+            // Eyeshadow
+            { id: 8, name: "Nude Eyeshadow Palette", category: "Eyeshadow", price: 45.00, rating: 5, img: "data:image/jpeg;base64,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", desc: "12 highly pigmented nude shades for everyday wear.", bestSeller: true },
+            
+            // Eyeliner
+            { id: 9, name: "Precision Liquid Eyeliner", category: "Eyeliner", price: 14.50, rating: 4, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAlHCnLql5a0wQ6JrZ3q3ZQsPJ2NwgYz6UhButEYnfTA&s=10", desc: "Sharp, precise lines with a quick-dry formula.", bestSeller: false },
+            
+            // Powder
+            { id: 10, name: "Translucent Setting Powder", category: "Powder", price: 25.99, rating: 4, img: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhMVFRMWFxcWGBUXGBUWGhgWFxYXFhgVGBcYHSggHholHhUYIjEhJSsrLi4uFx8zODMtNygtLisBCgoKDg0OFw8QFzIfHR0rKy0tLSstKystLS0tKy0tKy0tNy4rKy0rKy0rLSstLS0tLS0rLS0tKzgtLS0tKysrLf/AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABgIDBAUHCAH/xABJEAACAQICBwUEBwUFBQkAAAABAgADEQQhBQYSMUFRYQcTInGBMpGhsSNCUmJywfAzktHh8RRjgqLCJENEw9IIFTRTVIOjsrP/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EAB8RAQEAAgEFAQEAAAAAAAAAAAABAhEDEyExQVESYf/aAAwDAQACEQMRAD8A7jERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQETA03pihhKLV8Q4Smu8neTwVQMyx4ATh+snaLjtIErhi2Dwl7XB+lfzZcwfupu4sYHa9K6x4PCm2IxNGkfsvURWPkpNzNZR7QtFMbDHYe/Vwo97WE8+0tXBtFiCwOZ27kseJbZI457/fLeN0QAP2QHkWH5wunqfCYqnVUPSdaiHcyMGU+RGUvTx/o/SdfBVe8wtV6L8dk5G3Bl9lh0YETvfZh2mJpH/ZsQFp4xRcWySso3sl9zDinLMXF9kjosREBERAREQEREBERAREQEREBERAREQEREBERASxjsZTo03q1WCU0UszHcFUXJl+ci7aNMvXrUdE0Dm5WpWt5/RofdtnySBFdK6QrabxJr1dpMHSJWlS3X8/vkZseAsBzO4paORbeECwsLDcOQ6TPwWBSii009lBYdebeZOciuu+nCn+z0jZ2HjI3qp3KOp+A8xI0tae1np0iadBQ7jIsfZU8svaPw+UiWNx1aqb1KhPS9gPJVyHumOotu38/4ShjKi1UXrKcLiqlGolWkxSrTYMjDerA3BlbGW3S8I9aamawLj8HRxSgAutnUfVqKdl18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", desc: "Sets makeup and controls shine for up to 12 hours.", bestSeller: false },
+            
+            // Skincare
+            { id: 11, name: "Vitamin C Serum", category: "Skincare", price: 38.00, rating: 5, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT1rKxLk41FRP7tAHxQQGwWB_v_Uc_gvLdGTGoUrpIhA&s=10", desc: "Brighten and even out your skin tone with daily use.", bestSeller: true },
+            
+            // Perfume
+            { id: 12, name: "Rose Gold Eau de Parfum", category: "Perfume", price: 85.00, rating: 5, img: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80", desc: "A luxurious blend of rose, vanilla, and musk notes.", bestSeller: true },
+            { id: 13, name: "Floral Mist Perfume", category: "Perfume", price: 65.00, rating: 4, img: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=500&q=80", desc: "Light, refreshing floral scent perfect for daytime.", bestSeller: false },
+            
+            // Brushes
+            { id: 14, name: "Pro Makeup Brush Set (10pc)", category: "Makeup Brushes", price: 55.00, rating: 5, img: " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGcIFqcl1_1wloGeAVsl4rz-76AUkD28Es6LAZqPAbiA&s=10", desc: "Everything you need for a flawless makeup application.", bestSeller: true }
+        ];
+
+        // ==========================================
+        // STATE MANAGEMENT
+        // ==========================================
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        let currentCategory = 'All';
+
+        // ==========================================
+        // AUTHENTICATION LOGIC
+        // ==========================================
+        function switchAuth(type) {
+            document.getElementById('loginCard').style.display = type === 'login' ? 'block' : 'none';
+            document.getElementById('signupCard').style.display = type === 'signup' ? 'block' : 'none';
+        }
+
+        function handleLogin(e) {
+    if (e) e.preventDefault(); // منع تحديث الصفحة
+    
+    // 1. إخفاء واجهة تسجيل الدخول
+    const authWrapper = document.getElementById('authWrapper');
+    if (authWrapper) authWrapper.style.display = 'none';
+    
+    // 2. إظهار واجهة المتجر الرئيسي
+    const appWrapper = document.getElementById('appWrapper');
+    if (appWrapper) {
+        appWrapper.style.display = 'block'; // تضمن إظهار العنصر فوراً
+        appWrapper.classList.add('active');
+    }
+    
+    // 3. تشغيل تطبيق المتجر
+    if (typeof initApp === 'function') {
+        initApp();
+    }
+}
+
+        function handleSignup(e) {
+            e.preventDefault();
+            document.getElementById('authWrapper').style.display = 'none';
+            document.getElementById('appWrapper').classList.add('active');
+            initApp();
+        }
+
+        // ==========================================
+        // NAVIGATION LOGIC
+        // ==========================================
+        function navigateTo(pageName, data = null) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            
+            // Show target page
+            const targetPage = document.getElementById(`${pageName}-page`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Handle specific page logic
+            if (pageName === 'products' && data) {
+                currentCategory = data;
+                document.getElementById('productsTitle').innerText = data;
+                document.getElementById('productsSubtitle').innerText = `Browse our premium ${data} collection`;
+                renderProducts(data);
+            } else if (pageName === 'products') {
+                currentCategory = 'All';
+                document.getElementById('productsTitle').innerText = 'All Products';
+                document.getElementById('productsSubtitle').innerText = 'Discover our full range of premium beauty products';
+                renderProducts('All');
+            } else if (pageName === 'details' && data) {
+                renderProductDetails(data);
+            } else if (pageName === 'cart') {
+                renderCart();
+            } else if (pageName === 'favorites') {
+                renderFavorites();
+            } else if (pageName === 'checkout') {
+                renderCheckout();
+            } else if (pageName === 'offers') {
+                renderOffers();
+            }
+
+            // Close mobile menu if open
+            document.getElementById('navLinks').classList.remove('mobile-active');
+        }
+
+        // ==========================================
+        // RENDERING FUNCTIONS
+        // ==========================================
+        function renderCategories() {
+            const grid = document.getElementById('categoryGrid');
+            const allGrid = document.getElementById('allCategoriesGrid');
+            const html = categories.map(cat => `
+                <div class="cat-card" onclick="navigateTo('products', '${cat.name}')">
+                    <div class="cat-icon"><i class="${cat.icon}"></i></div>
+                    <h4>${cat.name}</h4>
+                </div>
+            `).join('');
+            
+            grid.innerHTML = html;
+            allGrid.innerHTML = html;
+        }
+
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                stars += i <= rating ? '★' : '☆';
+            }
+            return stars;
+        }
+
+        function createProductCard(product) {
+            const isFav = favorites.includes(product.id);
+            return `
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <button class="fav-btn" onclick="toggleFavorite(${product.id})">
+                            <i class="${isFav ? 'fas' : 'far'} fa-heart"></i>
+                        </button>
+                        <img src="${product.img}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">${product.category}</span>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="rating">${generateStars(product.rating)}</div>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="addToCart(${product.id})">
+                                <i class="fas fa-cart-plus"></i> Add
+                            </button>
+                            <button class="btn btn-outline" onclick="navigateTo('details', ${product.id})">
+                                View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProducts(category = 'All') {
+            const grid = document.getElementById('productsGrid');
+            const filtered = category === 'All' ? products : products.filter(p => p.category === category);
+            grid.innerHTML = filtered.map(createProductCard).join('');
+        }
+
+        function renderBestSellers() {
+            const grid = document.getElementById('bestSellersGrid');
+            const bestSellers = products.filter(p => p.bestSeller).slice(0, 4);
+            grid.innerHTML = bestSellers.map(createProductCard).join('');
+        }
+
+        function renderOffers() {
+            const grid = document.getElementById('offersGrid');
+            // Simulate offers by applying a 20% discount visually
+            const offers = products.slice(0, 6).map(p => {
+                const discountedPrice = (p.price * 0.8).toFixed(2);
+                return `
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <span style="position:absolute; top:15px; left:15px; background:#ff4d4d; color:white; padding:5px 10px; border-radius:5px; font-size:0.8rem; z-index:5;">-20%</span>
+                            <button class="fav-btn" onclick="toggleFavorite(${p.id})">
+                                <i class="${favorites.includes(p.id) ? 'fas' : 'far'} fa-heart"></i>
+                            </button>
+                            <img src="${p.img}" alt="${p.name}">
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">${p.category}</span>
+                            <h3 class="product-name">${p.name}</h3>
+                            <div class="rating">${generateStars(p.rating)}</div>
+                            <div class="product-price">
+                                <span style="text-decoration: line-through; color: #aaa; font-size: 1rem; margin-right: 8px;">$${p.price.toFixed(2)}</span>
+                                $${discountedPrice}
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-primary" onclick="addToCart(${p.id})">
+                                    <i class="fas fa-cart-plus"></i> Add
+                                </button>
+                                <button class="btn btn-outline" onclick="navigateTo('details', ${p.id})">View</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            grid.innerHTML = offers;
+        }
+
+        function renderProductDetails(id) {
+            const product = products.find(p => p.id === id);
+            const container = document.getElementById('detailsContainer');
+            const isFav = favorites.includes(product.id);
+            
+            container.innerHTML = `
+                <div>
+                    <img src="${product.img}" alt="${product.name}" class="details-img">
+                </div>
+                <div class="details-info">
+                    <span class="product-category">${product.category}</span>
+                    <h1>${product.name}</h1>
+                    <div class="rating" style="font-size: 1.2rem; margin: 10px 0;">${generateStars(product.rating)} <span style="color: var(--text-light); font-size: 0.9rem; font-family: 'Poppins';">( ${product.rating}.0 )</span></div>
+                    <div class="price">$${product.price.toFixed(2)}</div>
+                    <p style="color: var(--text-dark); margin-bottom: 20px;">${product.desc}</p>
+                    <p style="color: var(--text-light); margin-bottom: 20px;"><i class="fas fa-truck" style="color: var(--rose-gold);"></i> Free shipping on orders over $50</p>
+                    
+                    <div class="qty-selector">
+                        <label style="font-weight: 500;">Quantity:</label>
+                        <button class="qty-btn" onclick="updateQty(-1)">-</button>
+                        <input type="number" id="qtyInput" class="qty-input" value="1" min="1" readonly>
+                        <button class="qty-btn" onclick="updateQty(1)">+</button>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                        <button class="btn btn-primary" style="flex: 2;" onclick="addToCart(${product.id}, document.getElementById('qtyInput').value)">
+                            <i class="fas fa-shopping-bag"></i> Add to Cart
+                        </button>
+                        <button class="btn btn-outline" style="flex: 1;" onclick="toggleFavorite(${product.id})">
+                            <i class="${isFav ? 'fas' : 'far'} fa-heart"></i> ${isFav ? 'Saved' : 'Save'}
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateQty(change) {
+            const input = document.getElementById('qtyInput');
+            let newVal = parseInt(input.value) + change;
+            if (newVal < 1) newVal = 1;
+            input.value = newVal;
+        }
+
+        // ==========================================
+        // CART & FAVORITES LOGIC
+        // ==========================================
+        function addToCart(id, qty = 1) {
+            const product = products.find(p => p.id === id);
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.qty += parseInt(qty);
+            } else {
+                cart.push({ ...product, qty: parseInt(qty) });
+            }
+            
+            updateCartUI();
+            showNotification(`${product.name} added to cart!`);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+            renderCart();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function calculateTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const shipping = subtotal > 50 ? 0 : 5.99;
+            const total = subtotal + shipping;
+            return { subtotal, shipping, total };
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartContainer');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; grid-column: 1 / -1; padding: 50px;">
+                        <i class="fas fa-shopping-bag" style="font-size: 3rem; color: var(--beige-dark); margin-bottom: 20px;"></i>
+                        <h3>Your cart is empty</h3>
+                        <p style="color: var(--text-light); margin-bottom: 20px;">Add some products to get started!</p>
+                        <button class="btn btn-primary" onclick="navigateTo('products')">Start Shopping</button>
+                    </div>
+                `;
+                return;
+            }
+
+            const { subtotal, shipping, total } = calculateTotals();
+            
+            const itemsHtml = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">${item.category}</p>
+                        <p style="color: var(--rose-gold); font-weight: 600;">$${item.price.toFixed(2)} x ${item.qty}</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 700; margin-bottom: 10px;">$${(item.price * item.qty).toFixed(2)}</p>
+                        <button class="remove-btn" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i> Remove</button>
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = `
+                <div class="cart-items">
+                    ${itemsHtml}
+                </div>
+                <div class="cart-summary">
+                    <h3 style="margin-bottom: 20px;">Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>$${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>${shipping === 0 ? 'FREE' : '$' + shipping.toFixed(2)}</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <span>$${total.toFixed(2)}</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;" onclick="navigateTo('checkout')">
+                        Proceed to Checkout <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            `;
+        }
+
+        function renderCheckout() {
+            const summary = document.getElementById('checkoutSummary');
+            if (cart.length === 0) {
+                navigateTo('cart');
+                return;
+            }
+            const { subtotal, shipping, total } = calculateTotals();
+            summary.innerHTML = `
+                <h3 style="margin-bottom: 20px;">Order Summary</h3>
+                <div class="summary-row">
+                    <span>Items (${cart.reduce((s,i) => s+i.qty, 0)})</span>
+                    <span>$${subtotal.toFixed(2)}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span>${shipping === 0 ? 'FREE' : '$' + shipping.toFixed(2)}</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span>$${total.toFixed(2)}</span>
+                </div>
+            `;
+        }
+
+        function completeOrder(e) {
+            e.preventDefault();
+            showNotification("Order placed successfully! Thank you for shopping with Shaimaa Beauty.");
+            cart = [];
+            updateCartUI();
+            navigateTo('home');
+        }
+
+        function toggleFavorite(id) {
+            const index = favorites.indexOf(id);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                showNotification("Removed from favorites.");
+            } else {
+                favorites.push(id);
+                showNotification("Added to favorites!");
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            
+            // Re-render current view to update heart icons
+            const activePage = document.querySelector('.page.active').id;
+            if (activePage === 'products-page') renderProducts(currentCategory);
+            if (activePage === 'home-page') renderBestSellers();
+            if (activePage === 'favorites-page') renderFavorites();
+            if (activePage === 'details-page') renderProductDetails(id);
+        }
+
+        function renderFavorites() {
+            const grid = document.getElementById('favoritesGrid');
+            const favProducts = products.filter(p => favorites.includes(p.id));
+            
+            if (favProducts.length === 0) {
+                grid.innerHTML = `
+                    <div style="text-align: center; grid-column: 1 / -1; padding: 50px;">
+                        <i class="fas fa-heart" style="font-size: 3rem; color: var(--beige-dark); margin-bottom: 20px;"></i>
+                        <h3>No favorites yet</h3>
+                        <p style="color: var(--text-light); margin-bottom: 20px;">Click the heart icon on products to save them here.</p>
+                        <button class="btn btn-primary" onclick="navigateTo('products')">Browse Products</button>
+                    </div>
+                `;
+            } else {
+                grid.innerHTML = favProducts.map(createProductCard).join('');
+            }
+        }
+
+        // ==========================================
+        // SEARCH LOGIC
+        // ==========================================
+        function handleSearch() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const grid = document.getElementById('productsGrid');
+            const filtered = products.filter(p => p.name.toLowerCase().includes(term) || p.category.toLowerCase().includes(term));
+            
+            if (term.length > 0) {
+                navigateTo('products');
+                document.getElementById('productsTitle').innerText = `Search Results for "${term}"`;
+                document.getElementById('productsSubtitle').innerText = `${filtered.length} items found`;
+                grid.innerHTML = filtered.length > 0 ? filtered.map(createProductCard).join('') : `<p style="grid-column: 1/-1; text-align: center; color: var(--text-light);">No products match your search.</p>`;
+            }
+        }
+
+        // ==========================================
+        // UTILITY FUNCTIONS
+        // ==========================================
+        function showNotification(msg) {
+            const notif = document.createElement('div');
+            notif.style.cssText = `
+                position: fixed; "bottom: 20px; right: 20px; background: var(--text-dark); color: white;
+                padding: 15px 25px; border-radius: 10px; box-shadow: var(--shadow-lg); z-index: 9999;
+                animation: slideIn 0.3s ease; font-family: 'Poppins', sans-serif";
+            `;
+            notif.innerText = msg;
+            document.body.appendChild(notif);
+            
+            setTimeout(() => {
+                notif.style.opacity = '0';
+                notif.style.transition = '0.5s';
+                setTimeout(() => notif.remove(), 500);
+            }, 3000);
+        }
+
+        function sendMessage(e) {
+            e.preventDefault();
+            showNotification("Message sent! We will get back to you shortly.");
+            e.target.reset();
+        }
+
+        // ==========================================
+        // INITIALIZATION
+        // ==========================================
+        function initApp() {
+            renderCategories();
+            renderBestSellers();
+            updateCartUI();
+            
+            // Mobile menu toggle
+            document.getElementById('mobileToggle').addEventListener('click', () => {
+                document.getElementById('navLinks').classList.toggle('mobile-active');
+            });
+        }
+    </script>
+</body>
+</html>
